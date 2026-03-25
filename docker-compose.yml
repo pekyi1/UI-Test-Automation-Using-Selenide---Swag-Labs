@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  tests:
+    build: .
+    volumes:
+      - ./target/allure-results:/app/target/allure-results
+    environment:
+      - headless=true
+      - browser=chrome
+    command: mvn test -Dheadless=true
