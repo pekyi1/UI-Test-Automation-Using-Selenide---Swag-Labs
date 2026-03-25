@@ -1,4 +1,4 @@
-package com.saucedemo.tests;
+package com.saucedemo.base;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;

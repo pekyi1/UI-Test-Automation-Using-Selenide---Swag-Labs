@@ -1,8 +1,8 @@
 package com.saucedemo.tests;
 
+import com.saucedemo.base.BaseTest;
 import com.saucedemo.pages.InventoryPage;
 import com.saucedemo.pages.LoginPage;
-import com.saucedemo.pages.ProductDetailsPage;
 import com.saucedemo.utils.TestData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -16,11 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Epic("UI Automation")
-@Feature("Smoke Tests")
-public class SmokeTests extends BaseTest {
+@Feature("Login Tests")
+public class LoginTest extends BaseTest {
     private final LoginPage loginPage = new LoginPage();
     private final InventoryPage inventoryPage = new InventoryPage();
-    private final ProductDetailsPage productDetailsPage = new ProductDetailsPage();
 
     @Test
     @Tag("Smoke")
@@ -50,16 +49,5 @@ public class SmokeTests extends BaseTest {
         loginPage.openPage().login(TestData.LOCKED_OUT_USER, TestData.PASSWORD);
         assertEquals("Epic sadface: Sorry, this user has been locked out.",
                 loginPage.getErrorMessage(), "Locked out error message should match");
-    }
-
-    @Test
-    @Tag("Smoke")
-    @Story("Product Page")
-    @DisplayName("Verify product details page")
-    public void testProductDetailsVisibility() {
-        loginPage.openPage().login(TestData.STANDARD_USER, TestData.PASSWORD);
-        inventoryPage.openProductDetails(TestData.PRODUCT_BACKPACK);
-        assertEquals(TestData.PRODUCT_BACKPACK, productDetailsPage.getProductName(), "Product name should match");
-        assertTrue(productDetailsPage.getProductPrice().contains("29.99"), "Price should be correct");
     }
 }
