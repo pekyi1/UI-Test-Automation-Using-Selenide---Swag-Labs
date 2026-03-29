@@ -298,9 +298,15 @@ jobs:
           mkdir -p target/allure-results/history
           if [ -d "gh-pages/history" ]; then cp -r gh-pages/history/* target/allure-results/history/ || true; fi
 
+      - name: Debug - List Allure Results
+        if: always()
+        run: |
+          echo "Listing target/allure-results content:"
+          ls -R target/allure-results || echo "Directory not found!"
+
       - name: Build Allure Report
         if: always()
-        run: mvn allure:report
+        run: mvn allure:report -Dallure.results.directory=target/allure-results
 
       - name: Upload Allure Report as Artifact
         if: always()
