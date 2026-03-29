@@ -1,0 +1,37 @@
+{
+  "users": {
+    "standard": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "lockedOut": {
+      "username": "locked_out_user",
+      "password": "secret_sauce"
+    },
+    "invalid": {
+      "username": "wrong_user",
+      "password": "wrong_password"
+    }
+  },
+  "products": {
+    "backpack": "Sauce Labs Backpack",
+    "bikeLight": "Sauce Labs Bike Light"
+  },
+  "customer": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "zipCode": "12345"
+  },
+  "messages": {
+    "loginError": "Epic sadface: Username and password do not match any user in this service",
+    "lockedOutError": "Epic sadface: Sorry, this user has been locked out.",
+    "checkoutComplete": "Thank you for your order!"
+  },
+  "values": {
+    "totalPrice": "Total: $32.39",
+    "backpackPrice": "29.99",
+    "cartBadgeTwo": "2",
+    "remainingItemsCount": 1,
+    "appTitle": "Swag Labs"
+  }
+}

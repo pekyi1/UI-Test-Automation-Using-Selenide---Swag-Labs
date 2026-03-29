@@ -24,7 +24,7 @@ public class SwagLabsTest extends BaseTest {
     @DisplayName("Verify page title is Swag Labs")
     public void testPageTitle() {
         loginPage.openPage();
-        assertEquals("Swag Labs", title(), "Page title should be Swag Labs");
+        assertEquals(TestData.APP_TITLE, title(), "Page title should be Swag Labs");
     }
 
     @Test

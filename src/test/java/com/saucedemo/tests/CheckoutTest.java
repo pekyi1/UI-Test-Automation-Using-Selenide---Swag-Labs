@@ -35,13 +35,13 @@ public class CheckoutTest extends BaseTest {
         inventoryPage.goToCart();
         cartPage.checkout();
 
-        checkoutStepOnePage.fillCustomerInfo("John", "Doe", "12345");
+        checkoutStepOnePage.fillCustomerInfo(TestData.FIRST_NAME, TestData.LAST_NAME, TestData.ZIP_CODE);
 
-        assertEquals("Total: $32.39", checkoutStepTwoPage.getTotal(), "Total price should be correct");
+        assertEquals(TestData.TOTAL_PRICE, checkoutStepTwoPage.getTotal(), "Total price should be correct");
         checkoutStepTwoPage.finish();
 
         assertTrue(checkoutCompletePage.isCompleteHeaderDisplayed(), "Successful checkout header should be displayed");
-        assertEquals("Thank you for your order!", checkoutCompletePage.getSuccessHeaderText(),
+        assertEquals(TestData.CHECKOUT_COMPLETE_MSG, checkoutCompletePage.getSuccessHeaderText(),
                 "Success message should match");
     }
 }

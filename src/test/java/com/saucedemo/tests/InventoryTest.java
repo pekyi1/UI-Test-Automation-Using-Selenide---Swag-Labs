@@ -30,7 +30,7 @@ public class InventoryTest extends BaseTest {
         loginPage.openPage().login(TestData.STANDARD_USER, TestData.PASSWORD);
         inventoryPage.openProductDetails(TestData.PRODUCT_BACKPACK);
         assertEquals(TestData.PRODUCT_BACKPACK, productDetailsPage.getProductName(), "Product name should match");
-        assertTrue(productDetailsPage.getProductPrice().contains("29.99"), "Price should be correct");
+        assertTrue(productDetailsPage.getProductPrice().contains(TestData.BACKPACK_PRICE), "Price should be correct");
     }
 
     @Test

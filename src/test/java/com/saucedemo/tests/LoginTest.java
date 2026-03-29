@@ -36,8 +36,8 @@ public class LoginTest extends BaseTest {
     @Story("Invalid User Login")
     @DisplayName("Verify error message for invalid credentials")
     public void testInvalidLogin() {
-        loginPage.openPage().login("wrong_user", "wrong_password");
-        assertEquals("Epic sadface: Username and password do not match any user in this service",
+        loginPage.openPage().login(TestData.WRONG_USER, TestData.WRONG_PASSWORD);
+        assertEquals(TestData.ERROR_MSG_LOGIN,
                 loginPage.getErrorMessage(), "Error message should match");
     }
 
@@ -47,7 +47,7 @@ public class LoginTest extends BaseTest {
     @DisplayName("Verify error message for locked out user")
     public void testLockedOutUserLogin() {
         loginPage.openPage().login(TestData.LOCKED_OUT_USER, TestData.PASSWORD);
-        assertEquals("Epic sadface: Sorry, this user has been locked out.",
+        assertEquals(TestData.ERROR_MSG_LOCKED_OUT,
                 loginPage.getErrorMessage(), "Locked out error message should match");
     }
 }

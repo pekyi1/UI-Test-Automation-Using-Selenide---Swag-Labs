@@ -34,13 +34,13 @@ public class CartTest extends BaseTest {
 
         inventoryPage.addProductToCart(TestData.PRODUCT_BACKPACK);
         inventoryPage.addProductToCart(TestData.PRODUCT_BIKE_LIGHT);
-        assertEquals("2", inventoryPage.getCartBadgeCount(), "Cart badge should show 2");
+        assertEquals(TestData.CART_BADGE_TWO, inventoryPage.getCartBadgeCount(), "Cart badge should show 2");
 
         inventoryPage.goToCart();
         assertTrue(cartPage.isProductInCart(TestData.PRODUCT_BACKPACK), "Backpack should be in cart");
         assertTrue(cartPage.isProductInCart(TestData.PRODUCT_BIKE_LIGHT), "Bike Light should be in cart");
 
         cartPage.removeProduct(TestData.PRODUCT_BACKPACK);
-        assertEquals(1, cartPage.getCartItemsCount(), "One item should remain in cart");
+        assertEquals(TestData.REMAINING_ITEMS_COUNT, cartPage.getCartItemsCount(), "One item should remain in cart");
     }
 }
