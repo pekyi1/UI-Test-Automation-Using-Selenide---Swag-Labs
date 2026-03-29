@@ -26,7 +26,7 @@ public class InventoryPage {
 
     @Step("Add product {productName} to cart")
     public void addProductToCart(String productName) {
-        getProductByName(productName).$(".btn_inventory").click();
+        getProductByName(productName).$(".btn_inventory").shouldBe(visible).click();
     }
 
     @Step("Remove product {productName} from cart")
@@ -36,7 +36,7 @@ public class InventoryPage {
 
     @Step("Click on product name {productName}")
     public void openProductDetails(String productName) {
-        getProductByName(productName).$(".inventory_item_name").click();
+        getProductByName(productName).$(".inventory_item_name").shouldBe(visible).click();
     }
 
     @Step("Go to shopping cart")

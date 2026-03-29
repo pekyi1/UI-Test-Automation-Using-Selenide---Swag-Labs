@@ -24,7 +24,7 @@ public class CartPage {
 
     @Step("Got to checkout")
     public void checkout() {
-        checkoutButton.click();
+        checkoutButton.shouldBe(com.codeborne.selenide.Condition.visible).click();
     }
 
     @Step("Go back to shopping")

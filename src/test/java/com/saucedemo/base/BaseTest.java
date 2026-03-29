@@ -16,6 +16,7 @@ public class BaseTest {
         Configuration.timeout = 5000;
         Configuration.screenshots = true;
         Configuration.savePageSource = false;
+        Configuration.reportsFolder = "target/reports/tests";
 
         // Headless mode configuration via system property or default
         Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
