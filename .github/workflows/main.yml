@@ -149,13 +149,18 @@ jobs:
           repo = os.environ.get("GITHUB_REPOSITORY", "")
           branch = os.environ.get("GITHUB_REF_NAME", "")
           run_url = f"{os.environ.get('GITHUB_SERVER_URL')}/{repo}/actions/runs/{os.environ.get('GITHUB_RUN_ID')}"
+          
+          repo_owner = repo.split('/')[0] if '/' in repo else ''
+          repo_name = repo.split('/')[1] if '/' in repo else repo
+          allure_url = f"https://{repo_owner}.github.io/{repo_name}/" if repo_owner and repo_name else ""
 
           if not files:
             text = (
               "*Selenium UI Tests: FAIL ❌*\n"
               "I could not find test reports. This usually means tests did not run or the build stopped early.\n\n"
               f"Repo: `{repo}` | Branch: `{branch}`\n"
-              f"Run details: {run_url}"
+              f"Run details: {run_url}\n"
+              f"Allure report: {allure_url}"
             )
             with open("slack_payload.json", "w", encoding="utf-8") as f:
               json.dump({"text": text}, f)
@@ -220,6 +225,7 @@ jobs:
           lines.append("")
           lines.append(f"Repo: `{repo}` | Branch: `{branch}`")
           lines.append(f"Run details: {run_url}")
+          lines.append(f"Allure report: {allure_url}")
 
           with open("slack_payload.json", "w", encoding="utf-8") as f:
             json.dump({"text": "\n".join(lines)}, f)
@@ -234,7 +240,8 @@ jobs:
               *([f"- {name}:\n{reason}" for (name, _, reason) in failed_items[:12]] if failed_items else []),
               "",
               f"Repo: {repo} | Branch: {branch}",
-              f"Run details: {run_url}"
+              f"Run details: {run_url}",
+              f"Allure report: {allure_url}"
             ]))
           PY
 
