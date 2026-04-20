@@ -25,8 +25,7 @@ RUN mvn dependency:go-offline
 # Copy the source code
 COPY src ./src
 
-# Create a volume for Allure reports and screenshots
-VOLUME /app/target/allure-results
+
 
 # Command to run tests when the container starts
 CMD ["mvn", "test", "-Dheadless=true"]
